@@ -187,7 +187,12 @@ private void actionACLState(java.awt.event.ItemEvent itemEvent) {
  */
 public void clearACLList() {
 	getJListACL().setListData(new Object[0]);
+	
+	getPublicRadioButton().setEnabled(true);
+	getPrivateRadioButton().setEnabled(true);
 	getVCellSupportCheckBox().setSelected(false);
+	getJButtonAddACLUser().setEnabled(true);
+	getJButtonRemoveACLUser().setEnabled(true);
 }
 /**
  * connEtoC1:  (ACLEditor.initialize() --> ACLEditor.aCLEditor_Initialize()V)
@@ -302,6 +307,16 @@ private javax.swing.JRadioButton getACLRadioButton() {
  */
 public ACLState getACLState() {
 	return fieldACLState;
+}
+
+public void grantVCellSupportPermissions() {
+	// disables all UI except grant vCell support permissions
+	getPublicRadioButton().setEnabled(false);
+	getPrivateRadioButton().setEnabled(false);
+	getACLRadioButton().setSelected(true);
+	getVCellSupportCheckBox().setSelected(true);
+	getJButtonAddACLUser().setEnabled(false);
+	getJButtonRemoveACLUser().setEnabled(false);
 }
 
 /**
